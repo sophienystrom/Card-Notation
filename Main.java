@@ -11,7 +11,10 @@ class Main {
  String cardValue = inputNotation.substring(0,1);
  String cardSymbol = inputNotation.substring(1,2);
 
- switch (cardValue) {
+ if (inputNotation.length() == 2) //if statement to confirm two character notation (eg. QS not QSS)
+ {
+
+ switch (cardValue) { //switch statement for card VALUE (first character)- catches invalid card values
  case "2":
  cardValue = "Two";
  break;
@@ -40,15 +43,19 @@ class Main {
  cardValue = "Ten";
  break;
  case "Q":
+ case "q":
  cardValue = "Queen";
  break;
  case "A":
+ case "a":
  cardValue = "Ace";
  break;
  case "K":
+ case "k":
  cardValue = "King";
  break;
  case "J":
+ case "j":
  cardValue = "Jack";
  break;
  default:
@@ -56,7 +63,7 @@ class Main {
  System.out.println("invalid card value entry");
  }
 
- switch (cardSymbol) {
+ switch (cardSymbol) { //switch statement for card SYMBOL (second character)- catches invalid card values
  case "S":
  cardSymbol = "Spades";
  break;
@@ -74,7 +81,10 @@ class Main {
  System.out.println("invalid card symbol entry");
  }
 
- if (cardSymbol.equals("invalid") || cardValue.equals("invalid") )
+ /* if statement for card description. if either the card value or card symbol were deemed
+ invalid the card description CANNOT be formed since it does not exist */
+
+ if (cardSymbol.equals("invalid") || cardValue.equals("invalid") ) 
  {
   System.out.println("Full card description cannot be given due to invalid input");
  }
@@ -82,7 +92,11 @@ class Main {
  {
  System.out.println(cardValue + " of " + cardSymbol);
  }
- 
+
+ }
+ else //other half of if statement from above- if given notation is more or less than two characters the program cannot work
+  System.out.println("invalid notation length- must be two characters");
+
 
 
 
